@@ -13,6 +13,7 @@ Hardware – PCs, Cyclone II , USB flasher
 Software – Quartus prime Theory Adders are digital circuits that carry out the addition of numbers.
 
 **Half Adder**
+![image](https://github.com/user-attachments/assets/51e25a13-4e78-489d-82a7-c7143ac6f573)
 
 Half adder is a combinational circuit that performs simple addition of two binary numbers. The input variables designate the augend and addend bits; the output variables produce the sum and carry. It is necessary to specify two output variables because the result may consist of two binary digits.
 
@@ -23,6 +24,7 @@ Sum = A’B+AB’ =A ⊕ B Carry = AB
 Figure -01 HALF ADDER
 
 **Half Subtractor**
+![image](https://github.com/user-attachments/assets/c3a48f09-16e1-4fdd-bb35-cca56c375627)
 
 The half-subtractor is a combinational circuit which is used to perform subtraction of two bits. It has two inputs, X (minuend) and Y (subtrahend) and two outputs D (difference) and B (borrow). To perform x - y, we have to check the relative magnitudes of x and y. If x ;;, y, we have three possibilities: 0 - 0 = 0, 1 - 0 = 1, and 1 - I = 0. The result is called the difference bit. If x < y, we have 0 - I, and it is necessary to borrow a 1 from the next higher stage. The I borrowed from the next higher stage adds 2 to the minuend bit, just as in the decimal system a borrow adds 10 to a minuend digit. With the minuend equal to 2, the difference becomes 2 - I = 1. The half-subtractor needs two outputs. One output generates the difference and will be designated by the symbol D. The second output, designated B for borrow, generates the binary signal that informs the next stage that a I has been borrowed. 
 
@@ -34,11 +36,8 @@ Borrow = A’B
 Figure -02 HALF Subtractor
 
 **Truthtable**
-![image](https://github.com/user-attachments/assets/7518510e-f2d8-4aee-9d8f-a030f2ce8262)
-![image](https://github.com/user-attachments/assets/4dd03063-a24d-4b44-ac55-6637b8013127)
-![image](https://github.com/user-attachments/assets/564808ae-366f-42bc-9e00-ab626b64338e)
-![image](https://github.com/user-attachments/assets/aa19277f-686e-43a1-a75c-9b8833b11e57)
 
+![image](https://github.com/user-attachments/assets/d6ad8a46-942d-4a84-9682-75bdf8b4fc45)
 
 
 
@@ -57,25 +56,29 @@ Figure -02 HALF Subtractor
 
 **Program:**
 ```
-module exp5(din,a,b,c);
- input [0:7] din;
- output a,b,c;
- assign a=(din[4]| din [5]| din[6 ]| din[7]);
- assign b=(din[2]| din[3]| din[6]| din[7]);
- assign c=(din[1]| din[3]| din[5]| din[7]);
+module exp3(a,b,cy, sm, df,bo);
+ input a,b;
+ output sm,cy, df, bo;
+ xor(sm,a,b);
+ and(cy,a,b); 
+ xor(df,a,b); 
+ and (bo,~a,b);
  endmodule
 ```
 
 /* Program to design a half adder and full adder circuit and verify its truth table in quartus using Verilog programming.
 
-Developed by:R Ashwanth  RegisterNumber: 24900175
+Developed by:R Ashwanth    RegisterNumber: 24900175
 
 **RTL Schematic**
-![Screenshot 2024-11-11 134736](https://github.com/user-attachments/assets/dabce1fd-4fd3-42bd-bb6d-afa1d6ed83c3)
+![image](https://github.com/user-attachments/assets/5fb99e64-4056-48a1-9cd7-bbad0971f44a)
+
 
 **Output/TIMING Waveform**
-![Screenshot 2024-11-11 134936](https://github.com/user-attachments/assets/4dd3c6fb-61c8-4546-bb38-36bac3783eb2)
+![image](https://github.com/user-attachments/assets/58a7fa8c-7e3c-42d8-8a9f-fd361c377e4b)
+
 
 **Result:**
-Thus the Half Adder and HalfSubtractor circuits are designed and the truth tables is
- verified using Quartus software
+ The truth table for half adder and half subtracter are verified successfully.
+
+
